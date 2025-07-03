@@ -13,6 +13,9 @@ if (result) {
 }
 
 function sumInArray(array, number) {
+
+    //asumo que todos los numeros son enteros positivos
+
     var isInArray = false;
     //Verifico que el array tenga por lo menos dos numeros.
     if (array.length < 2) {
