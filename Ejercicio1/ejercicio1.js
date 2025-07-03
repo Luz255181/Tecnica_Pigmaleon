@@ -1,14 +1,15 @@
 
 //Pequeño programa que muestra el funcionamiento de mi programa.
+//Asumo que los elementos del array son todos numeros.
 const inputArray = prompt("Ingresá los números separados por coma (ej: 1,2,3,4):");
 const array = inputArray.split(",").map(num => parseInt(num.trim()));
 const inputNumber = prompt("Ingresá el número que querés verificar:");
 const number = parseInt(inputNumber);
 const result = sumInArray(array, number);
 if (result) {
-    alert("El numero ", number, " es resultado de la suma de dos elementos del array");
+    alert("El numero " + number + " es resultado de la suma de dos elementos del array");
 } else {
-    alert("El numero ", number, " no es resultado de la suma de dos elementos del array");
+    alert("El numero " + number + " no es resultado de la suma de dos elementos del array");
 }
 
 function sumInArray(array, number) {
