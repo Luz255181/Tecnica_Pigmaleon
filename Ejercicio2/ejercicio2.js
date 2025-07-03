@@ -14,32 +14,26 @@ if (result) {
 function sumInArray(array, number) {
     //Se ordena el array de menor a mayor
     array.sort((a, b) => a - b);
-    var isInTheArray = false;
-    //Verifico que el array dado tenga por lo menos dos numeros para comparar
-    if (array.length < 2) {
-        return false;
-    }
-    var higher1 = array.length - 1;
-    var higher2 = array.length - 2;
-    //Si la suma de los dos numeros mas grandes es menor que el numero a verificar,
-    //entonces el numero no va a ser resultado d la suma de ningun par de numeros.
-    if (array[higher1] + array[higher2] < number) {
-        return false;
-    }
-    while (!isInTheArray && higher1 > 0) {
-        higher2 = higher1 - 1;
-        while (!isInTheArray && higher2 >= 0) {
-            if (array[higher1] + array[higher2] === number) {
-                isInTheArray = true;
-            }
-            //Si la suma de los elementos en ambas posiciones es menor que el numero a comparar,
-            //no tiene sentido seguir revisando con higher1 fijo.
-            if (array[higher1] + array[higher2] < number) {
-                break;
-            }
-            higher2--;
+
+    //Posiciono un puntero en el extremo derecho (el elemento mas grande)
+    //y otro en el extremo izquierdo (el elemento mas pequeño)
+    var left = 0;
+    var right = array.length - 1;
+
+    while (left < right) {
+        //Si encontre el par de numeros, termino el bucle y retorno verdadero
+        if (array[left] + array[right] === number) {
+            return true;
         }
-        higher1--;
+        //En caso de que la suma sea mayo al numero dado, muevo a la izquierda el puntero de la derecha
+        //(tomo el anterior mas grande)
+        if (array[left] + array[right] > number) {
+            right--;
+        } else {
+            //si es mas chico, entonces muevo el puntero izquierdo una posicion a la derecha
+            //(tomo el siguiente mas grande)
+            left++;
+        }
     }
-    return isInTheArray;
+    return false;
 }
